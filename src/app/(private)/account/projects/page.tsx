@@ -1,6 +1,7 @@
 import React from "react";
 import { UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
+import { saveCurrentUserToMongoDB } from "@/server-actions/users";
 
 async function UserAccountProjectPage() {
   const currentUserDate = await currentUser();
@@ -9,7 +10,10 @@ async function UserAccountProjectPage() {
   const userEmail = currentUserDate?.emailAddresses[0].emailAddress;
   const userProfilePic = currentUserDate?.imageUrl;
 
-  console.log(currentUserDate);
+  // const response = await saveCurrentUserToMongoDB();
+  // const mongoUser = response.data;
+
+  // console.log(currentUserDate);
   return (
     <div className="p-5">
       <h1>Project</h1>

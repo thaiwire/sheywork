@@ -9,6 +9,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import { connectMongoDB } from "@/config/mongodb";
+import LayoutProvider from "@/layout-provider";
 
 export const metadata: Metadata = {
   title: "Shey Wrok App",
@@ -25,7 +26,9 @@ export default async function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body>
-          <Theme>{children}</Theme>
+          <Theme>
+            <LayoutProvider>{children}</LayoutProvider>
+          </Theme>
         </body>
       </html>
     </ClerkProvider>
